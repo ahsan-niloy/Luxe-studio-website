@@ -168,7 +168,11 @@ function reloadCSS() {
   }, 50);
 }
 module.exports = reloadCSS;
-},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"style/style.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"/Users/ahsanhabib/Documents/Git Repo/Luxe-studios-website/Luxe-studio-website/fonts/Inter_18pt-Regular.ttf":[["Inter_18pt-Regular.ecbebffb.ttf","fonts/Inter_18pt-Regular.ttf"],"fonts/Inter_18pt-Regular.ttf"],"/Users/ahsanhabib/Documents/Git Repo/Luxe-studios-website/Luxe-studio-website/fonts/Inter_18pt-Bold.ttf":[["Inter_18pt-Bold.d2b0b839.ttf","fonts/Inter_18pt-Bold.ttf"],"fonts/Inter_18pt-Bold.ttf"],"/Users/ahsanhabib/Documents/Git Repo/Luxe-studios-website/Luxe-studio-website/fonts/ClashDisplay-Regular.ttf":[["ClashDisplay-Regular.b70cb94a.ttf","fonts/ClashDisplay-Regular.ttf"],"fonts/ClashDisplay-Regular.ttf"],"/Users/ahsanhabib/Documents/Git Repo/Luxe-studios-website/Luxe-studio-website/fonts/ClashDisplay-Medium.ttf":[["ClashDisplay-Medium.a997a60e.ttf","fonts/ClashDisplay-Medium.ttf"],"fonts/ClashDisplay-Medium.ttf"],"/Users/ahsanhabib/Documents/Git Repo/Luxe-studios-website/Luxe-studio-website/fonts/ClashDisplay-Semibold.ttf":[["ClashDisplay-Semibold.abb2ae38.ttf","fonts/ClashDisplay-Semibold.ttf"],"fonts/ClashDisplay-Semibold.ttf"],"/Users/ahsanhabib/Documents/Git Repo/Luxe-studios-website/Luxe-studio-website/fonts/ClashDisplay-Bold.ttf":[["ClashDisplay-Bold.65514b7a.ttf","fonts/ClashDisplay-Bold.ttf"],"fonts/ClashDisplay-Bold.ttf"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -193,7 +197,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49965" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64104" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
