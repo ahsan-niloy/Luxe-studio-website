@@ -6809,11 +6809,29 @@ var _CSSPlugin = require("./CSSPlugin.js");
 var gsapWithCSS = exports.default = exports.gsap = _gsapCore.gsap.registerPlugin(_CSSPlugin.CSSPlugin) || _gsapCore.gsap,
   // to protect from tree shaking
   TweenMaxWithCSS = exports.TweenMax = gsapWithCSS.core.Tween;
-},{"./gsap-core.js":"node_modules/gsap/gsap-core.js","./CSSPlugin.js":"node_modules/gsap/CSSPlugin.js"}],"script/index.js":[function(require,module,exports) {
+},{"./gsap-core.js":"node_modules/gsap/gsap-core.js","./CSSPlugin.js":"node_modules/gsap/CSSPlugin.js"}],"Asset/1.jpg":[function(require,module,exports) {
+module.exports = "/1.3d40b72c.jpg";
+},{}],"Asset/2.jpg":[function(require,module,exports) {
+module.exports = "/2.34da30a7.jpg";
+},{}],"Asset/3.jpg":[function(require,module,exports) {
+module.exports = "/3.5bff8a4c.jpg";
+},{}],"Asset/4.jpg":[function(require,module,exports) {
+module.exports = "/4.919077b3.jpg";
+},{}],"Asset/5.jpg":[function(require,module,exports) {
+module.exports = "/5.e4830754.jpg";
+},{}],"Asset/6.jpg":[function(require,module,exports) {
+module.exports = "/6.b98c7e62.jpg";
+},{}],"script/index.js":[function(require,module,exports) {
 "use strict";
 
 var _splitType = _interopRequireDefault(require("split-type"));
 var _gsap = _interopRequireDefault(require("gsap"));
+var _ = _interopRequireDefault(require("../Asset/1.jpg"));
+var _2 = _interopRequireDefault(require("../Asset/2.jpg"));
+var _3 = _interopRequireDefault(require("../Asset/3.jpg"));
+var _4 = _interopRequireDefault(require("../Asset/4.jpg"));
+var _5 = _interopRequireDefault(require("../Asset/5.jpg"));
+var _6 = _interopRequireDefault(require("../Asset/6.jpg"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 // nav icon & animation
 
@@ -6856,7 +6874,121 @@ texts.forEach(function (text) {
     });
   });
 });
-},{"split-type":"node_modules/split-type/dist/index.js","gsap":"node_modules/gsap/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+
+// Import your images
+
+// Store them in an array
+var images = [_.default, _2.default, _3.default, _4.default, _5.default, _6.default];
+
+// HEADER SLIDER SECTION
+var sliderContent = ["friendship", "Love", "Forever", "Celebration", "Moments", "memories"];
+var currentImageIndex = 2;
+var currentContentIndex = 1;
+var totalImages = 6;
+var isAnimating = false;
+function splitTextIntoSpans(selector) {
+  var elements = document.querySelectorAll(selector);
+  elements.forEach(function (element) {
+    var text = element.innerText;
+    var splitText = text.split("").map(function (char) {
+      return "<span>".concat(char === " " ? "&nbsp;&nbsp;" : char, "</span>");
+    }).join("");
+    element.innerHTML = splitText;
+  });
+}
+_gsap.default.to(".slide-next-img", {
+  clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+  duration: 1.5,
+  ease: "power3.out",
+  delay: 1
+});
+function updateSlider() {
+  if (isAnimating) return;
+  isAnimating = true;
+  splitTextIntoSpans(".slider-content-active h3");
+  _gsap.default.to(".slide-active img", {
+    scale: 2,
+    duration: 2,
+    ease: "power3.out"
+  });
+  _gsap.default.to(".slider-content-active h3 span", {
+    top: "-175px",
+    stagger: 0.05,
+    ease: "power3.out",
+    duration: 0.5,
+    onComplete: function onComplete() {
+      _gsap.default.to(".slider-content-active", {
+        top: "-175px",
+        duration: 0.25,
+        ease: "power3.out"
+      });
+    }
+  });
+  splitTextIntoSpans(".slider-content-next h3");
+  _gsap.default.set(".slider-content-next h3 span", {
+    top: "200px"
+  });
+  _gsap.default.to(".slider-content-next", {
+    top: "0",
+    duration: 1.125,
+    ease: "power3.out",
+    onComplete: function onComplete() {
+      document.querySelector(".slider-content-active").remove();
+      _gsap.default.to(".slider-content-next h3 span", {
+        top: 0,
+        stagger: 0.05,
+        ease: "power3.out",
+        duration: 0.5
+      });
+      var nextContent = document.querySelector(".slider-content-next");
+      nextContent.classList.remove("slider-content-next");
+      nextContent.classList.add("slider-content-active");
+      nextContent.style.top = "0";
+      currentContentIndex = (currentContentIndex + 1) % totalImages;
+      var nextContentText = sliderContent[currentContentIndex];
+      var newContentHTML = "<div class=\"slider-content-next\" style=\"top: 200px;\"><h3>".concat(nextContentText, "</h3></div>");
+      document.querySelector(".slider-content").insertAdjacentHTML("beforeend", newContentHTML);
+    }
+  });
+  currentImageIndex = (currentImageIndex + 1) % totalImages;
+  var newSlideHTML = "\n     <div class=\"slide-next\">\n       <div class=\"slide-next-img\">\n         <img src=\"".concat(images[currentImageIndex], "\" alt=\"\" />\n       </div>\n     </div>\n   ");
+  document.querySelector(".slider").insertAdjacentHTML("beforeend", newSlideHTML);
+  _gsap.default.to(".slider .slide-next:last-child .slide-next-img", {
+    clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+    duration: 1.5,
+    ease: "power3.out",
+    delay: 0.5
+  });
+  var slideNextImg = document.querySelector(".slide-next-img");
+  _gsap.default.to(slideNextImg, {
+    width: "100vw",
+    height: "100vh",
+    duration: 2,
+    ease: "power3.out",
+    onComplete: function onComplete() {
+      var currentActiveSlide = document.querySelector(".slide-active");
+      if (currentActiveSlide) {
+        currentActiveSlide.parentNode.removeChild(currentActiveSlide);
+      }
+      var nextSlide = document.querySelector(".slide-next");
+      if (nextSlide) {
+        nextSlide.classList.remove("slide-next");
+        nextSlide.classList.add("slide-active");
+        var nextSlideImg = nextSlide.querySelector(".slide-next-img");
+        if (nextSlide) {
+          nextSlideImg.classList.remove("slide-next-img");
+        }
+      }
+      setTimeout(function () {
+        isAnimating = false;
+      }, 500);
+    }
+  });
+}
+
+// Automatically update the slider every 1.5 seconds
+setInterval(updateSlider, 4000);
+},{"split-type":"node_modules/split-type/dist/index.js","gsap":"node_modules/gsap/index.js","../Asset/1.jpg":"Asset/1.jpg","../Asset/2.jpg":"Asset/2.jpg","../Asset/3.jpg":"Asset/3.jpg","../Asset/4.jpg":"Asset/4.jpg","../Asset/5.jpg":"Asset/5.jpg","../Asset/6.jpg":"Asset/6.jpg"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -6881,7 +7013,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49369" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52023" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

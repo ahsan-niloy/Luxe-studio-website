@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Luxe Studios</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/Asset/luxe-studio-favicon.png"
+    />
     <link rel="stylesheet" href="./style/style.css" />
     <script src="./script/index.js" defer></script>
   </head>
@@ -35,24 +40,23 @@
     <!-- nav bar ends -->
     <main>
       <header>
-        <!-- temporary code  -->
-        <div class="temp-header">
-          <img src="./Asset/header-photo-1-png.png" alt="" id="png" />
-          <div class="display">Moments</div>
-          <img src="./Asset/header-photo-1.jpg" alt="" id="bg" />
-          <div class="gradient-transition"></div>
+        <div class="slider">
+          <div class="slide-active">
+            <img src="./Asset/1.jpg" alt="" />
+          </div>
+          <div class="slide-next">
+            <div class="slide-next-img">
+              <img src="./Asset/2.jpg" alt="" />
+            </div>
+          </div>
         </div>
-        <div class="text-section container">
-          <h1>
-            <span>Capturing Your Dream</span>
-            <img
-              src="./Asset/text-section-pill-1.jpg"
-              alt="picture of Couple sitting in a bike. Sunset Background"
-            /><br /><img
-              src="./Asset/text-section-pill-2.jpg"
-              alt="picture of couple kissing on forhead"
-            />In Magical Frame
-          </h1>
+        <div class="slider-content">
+          <div class="slider-content-active">
+            <h3>Moments</h3>
+          </div>
+          <div class="slider-content-next">
+            <h3>Love</h3>
+          </div>
         </div>
       </header>
       <section class="our-events"></section>
