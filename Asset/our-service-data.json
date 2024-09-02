@@ -1,0 +1,30 @@
+[
+  {
+    "image": "our-work-card-1",
+    "date": "21 June",
+    "location": "Vancouver, BC",
+    "description": "Celebrate a joyous reception with family, friends, love, and laughter.",
+    "pageLink": "#"
+  },
+  {
+    "image": "our-work-card-2",
+    "date": "2nd July",
+    "location": "Sahali, Kamloops",
+    "description": "If you are looking for best mountain view kamloops is the perfect place for you",
+    "pageLink": "#"
+  },
+  {
+    "image": "our-work-card-3",
+    "date": "28 July",
+    "location": "Hill Side, Kamloops",
+    "description": "Hillside Residential Area with Scenic Views in Kamloops.",
+    "pageLink": "#"
+  },
+  {
+    "image": "our-work-card-4",
+    "date": "16 August",
+    "location": "Sahali, Kamloops",
+    "description": "Hillside Residential Area with Scenic Views in Kamloops.",
+    "pageLink": "#"
+  }
+]

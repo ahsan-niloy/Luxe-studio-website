@@ -7,6 +7,9 @@
     <link rel="icon" type="image/x-icon" href="/luxe-studio-favicon.e1fa3cb3.png">
     <link rel="stylesheet" href="/style.493e6e98.css">
     <script src="/script.7c337ef3.js" defer=""></script>
+    <!-- swiper js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="/style.493e6e98.js"></script></head>
   <body>
     <!-- nav bar start -->
@@ -50,8 +53,185 @@
           </div>
         </div>
       </header>
-      <section class="our-events"></section>
+      <!-- Text section -->
+      <section class="text-section container">
+        <h1>
+          <span>Transforming Your Wedding Day Into</span><span>Timeless Memories</span>
+        </h1>
+        <div class="text-section-pill">
+          <img src="/text-section-pill-1.4e821aa4.jpg" alt="">
+          <img src="/text-section-pill-2.b800fe48.jpg" alt="">
+        </div>
+      </section>
+      <!-- our event -->
+      <section class="container section-spacing our-event">
+        <h2>Our event</h2>
+        <div class="label-4">Our event</div>
+        <!-- Swiper -->
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="our-event-card">
+                <div class="date">21 July</div>
+                <div>
+                  <div class="location">Vancouver, BC</div>
+                  <div class="description">
+                    Celebrate a joyous reception with family, friends, love, and
+                    laughter.
+                  </div>
+                  <button><span>Explore</span><span>></span></button>
+                </div>
+              </div>
+            </div>
+            <!-- Repeat for each slide -->
+            <div class="swiper-slide">
+              <div class="our-event-card">
+                <div class="date">2nd July</div>
+                <div>
+                  <div class="location">Sahali, Kamloops</div>
+                  <div class="description">
+                    If you are looking for best mountain view Kamloops is the
+                    perfect place for you.
+                  </div>
+                  <button><span>Explore</span><span>></span></button>
+                </div>
+              </div>
+            </div>
+            <!-- Repeat for each slide -->
+            <div class="swiper-slide">
+              <div class="our-event-card">
+                <div class="date">28 July</div>
+                <div>
+                  <div class="location">Hill Side, Kamloops</div>
+                  <div class="description">
+                    Hillside Residential Area with Scenic Views in Kamloops.
+                  </div>
+                  <button><span>Explore</span><span>></span></button>
+                </div>
+              </div>
+            </div>
+            <!-- Repeat for each slide -->
+            <div class="swiper-slide">
+              <div class="our-event-card">
+                <div class="date">22 July</div>
+                <div>
+                  <div class="location">Vancouver, BC</div>
+                  <div class="description">
+                    Another joyful event description.
+                  </div>
+                  <button><span>Explore</span><span>></span></button>
+                </div>
+              </div>
+            </div>
+            <!-- Add more swiper-slide divs as needed -->
+          </div>
+        </div>
+      </section>
+      <section class="our-service container section-spacing">
+        <h2>Our Service</h2>
+        <div class="label-4">Our Service</div>
+        <div>
+          <div class="service">
+            <div>
+              <span>01</span>
+              <div>
+                <h4>Packages</h4>
+                <p>
+                  Select Your Exceptional Wedding Photography & Videography
+                  Services to Capture Every Cherished Moment.
+                </p>
+                <button>
+                  Learn More
+                  <img src="/Arrow-Vector.e48ee238.svg" alt="">
+                </button>
+              </div>
+            </div>
+            <div class="service-img">
+              <img src="/service-packages.ee7694d4.jpg" alt="">
+            </div>
+          </div>
+          <div class="service">
+            <div>
+              <span>02</span>
+              <div>
+                <h4>WEDDING</h4>
+                <p>
+                  Select the perfect wedding package for your special day. Our
+                  customizable options ensure that every moment, from the
+                  smallest details to the grandest events
+                </p>
+                <button>
+                  Learn More
+                  <img src="/Arrow-Vector.e48ee238.svg" alt="">
+                </button>
+              </div>
+            </div>
+            <div class="service-img">
+              <img src="/service-wedding.683e9130.jpg" alt="">
+            </div>
+          </div>
+          <div class="service">
+            <div>
+              <span>03</span>
+              <div>
+                <h4>EVENT</h4>
+                <p>
+                  We also offer professional photography and videography
+                  services for corporate events and functions.
+                </p>
+                <button>
+                  Learn More
+                  <img src="/Arrow-Vector.e48ee238.svg" alt="">
+                </button>
+              </div>
+            </div>
+            <div class="service-img">
+              <img src="/service-event.1e310b7c.jpg" alt="">
+            </div>
+          </div>
+          <div class="service">
+            <div>
+              <span>04</span>
+              <div>
+                <h4>Solo & Family</h4>
+                <p>
+                  Capture the essence of your individuality or the bond of your
+                  family with our expertly crafted Solo & Family Photography
+                  package.
+                </p>
+                <button>
+                  Learn More
+                  <img src="/Arrow-Vector.e48ee238.svg" alt="">
+                </button>
+              </div>
+            </div>
+            <div class="service-img">
+              <img src="/service-packages.ee7694d4.jpg" alt="">
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
-    <!-- ADD visitors page view counter to tract people page visites -->
+    <!-- Initialize Swiper -->
+    <script>var vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+var slidesPerViewMatric;
+if (vw > 1600) {
+  slidesPerViewMatric = 4;
+} else if (vw > 1200) {
+  slidesPerViewMatric = 3;
+} else if (vw > 800) {
+  slidesPerViewMatric = 2;
+} else {
+  slidesPerViewMatric = 1;
+}
+console.log(vw);
+var swiper = new Swiper(".mySwiper", {
+  slidesPerView: slidesPerViewMatric,
+  spaceBetween: 10,
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: true
+  }
+});</script>
   </body>
 </html>
