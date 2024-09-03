@@ -125,7 +125,7 @@ h4 {
   line-height: 100%;
 }
 p {
-  font: var(--ff-inter-regular);
+  font-family: var(--ff-inter-regular);
   color: var(--cf-neutral-black-900);
   font-size: 1rem;
   line-height: 120%;
@@ -146,7 +146,7 @@ p {
 .label-3 {
   font-family: var(--ff-inter-regular);
   color: var(--cf-neutral-black-900);
-  font-size: 0.875rem;
+  font-size: 2rem;
   line-height: 100%;
 }
 .label-4 {
@@ -636,6 +636,131 @@ header {
 }
 
 /* OUR SERVICE SECTION ENDS */
+/* GALLERY SECTION START  */
+#reelButton {
+  position: absolute;
+  text-decoration: none;
+  color: #fff;
+  bottom: 0;
+  right: 0;
+  padding: 2em 1em;
+  font-size: 16px;
+}
+
+.carousel {
+  width: 100%;
+  cursor: grab;
+  overflow: hidden; /* Hide scrollbars */
+}
+
+.carousel-wrapper {
+  white-space: nowrap;
+  overflow-x: scroll; /* Allow scrolling */
+  -ms-overflow-style: none; /* Hide scrollbar in Internet Explorer and Edge */
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+}
+
+.carousel-wrapper::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in WebKit browsers (Chrome, Safari) */
+}
+
+.carousel-item {
+  display: inline-block;
+  width: 40vw;
+  padding: 3vw;
+}
+
+.carousel-item figure {
+  position: relative;
+  padding-bottom: 50%;
+  overflow: hidden;
+}
+
+.carousel-item figure img {
+  position: absolute;
+  width: 100%;
+  object-fit: cover;
+}
+
+.carousel-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 20vw;
+  height: 2px;
+  margin: 2em;
+  background: rgba(87, 94, 32, 0.1);
+}
+
+.carousel-progress-bar {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--cf-primary-400);
+  transform: scaleX(0);
+  transform-origin: 0% 0%;
+}
+/* GALLERY SECTION END  */
+
+/* CELEBRATE SECTION STARTS  */
+.celebrate {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-around;
+}
+.celebrate p {
+  color: var(--cf-neutral-gray-400);
+  max-width: 40ch;
+}
+.celebrate button {
+  margin: 0;
+  margin-top: 2rem;
+}
+.celebrate-img {
+  position: relative;
+}
+.celebrate-img img {
+  max-height: 570px;
+  max-width: 460px;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+.celebrate-data {
+  position: absolute;
+  z-index: 2;
+  background-color: #cac9b7;
+  border-radius: 1rem;
+  padding: 2rem;
+  display: grid;
+  gap: 1rem;
+  top: 25%;
+  left: -40%;
+}
+.celebrate-data #C1 {
+  border-bottom: 1px solid var(--cf-neutral-gray-400);
+  padding-bottom: 1.5rem;
+}
+.celebrate-data p {
+  padding-top: 1rem;
+}
+/* CELEBRATE SECTION ENDS  */
+/* TESTIMONIAL SECTION STARTS  */
+.testomonial-main > div {
+  max-width: 400px;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: rgba(113, 115, 66, 0.3);
+}
+.main-frame {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+.main-frame p {
+  font-size: 12px;
+}
+/* TESTIMONIAL SECTION ENDS  */
 /* Animation */
 /* text animation  */
 .text {
@@ -680,6 +805,10 @@ header {
   }
   .slider-content {
     height: 120px;
+  }
+  .celebrate-img img {
+    height: 370px;
+    width: 360px;
   }
 }
 @media (max-width: 834px) {
@@ -751,6 +880,19 @@ header {
   }
   .service-img {
     display: none;
+  }
+  .celebrate-img img {
+    max-height: 470px;
+    max-width: 360px;
+    margin-left: 120px;
+  }
+  .celebrate {
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .celebrate-data {
+    left: 15%;
+    width: 180px;
   }
 }
 

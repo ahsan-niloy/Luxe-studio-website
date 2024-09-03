@@ -6833,6 +6833,12 @@ var _4 = _interopRequireDefault(require("../Asset/4.jpg"));
 var _5 = _interopRequireDefault(require("../Asset/5.jpg"));
 var _6 = _interopRequireDefault(require("../Asset/6.jpg"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 // nav icon & animation
 
 var icon = document.getElementById("nav-icon4");
@@ -6988,6 +6994,128 @@ function updateSlider() {
 
 // Automatically update the slider every 1.5 seconds
 setInterval(updateSlider, 4000);
+
+// GALLERY SECTION
+var lerp = function lerp(f0, f1, t) {
+  return (1 - t) * f0 + t * f1;
+};
+var clamp = function clamp(val, min, max) {
+  return Math.max(min, Math.min(val, max));
+};
+var DragScroll = /*#__PURE__*/function () {
+  function DragScroll(obj) {
+    _classCallCheck(this, DragScroll);
+    this.el = document.querySelector(obj.el);
+    this.wrap = this.el.querySelector(obj.wrap);
+    this.items = this.el.querySelectorAll(obj.item);
+    this.bar = this.el.querySelector(obj.bar);
+    this.init();
+  }
+  return _createClass(DragScroll, [{
+    key: "init",
+    value: function init() {
+      this.progress = 0;
+      this.speed = 0;
+      this.oldX = 0;
+      this.x = 0;
+      this.playrate = 0;
+      this.bindings();
+      this.events();
+      this.calculate();
+      this.raf();
+    }
+  }, {
+    key: "bindings",
+    value: function bindings() {
+      var _this = this;
+      ["events", "calculate", "raf", "handleWheel", "move", "raf", "handleTouchStart", "handleTouchMove", "handleTouchEnd"].forEach(function (method) {
+        _this[method] = _this[method].bind(_this);
+      });
+    }
+  }, {
+    key: "calculate",
+    value: function calculate() {
+      this.progress = 0;
+      this.wrapWidth = this.items[0].clientWidth * this.items.length;
+      this.wrap.style.width = "".concat(this.wrapWidth, "px");
+      this.maxScroll = this.wrapWidth - this.el.clientWidth;
+    }
+  }, {
+    key: "handleWheel",
+    value: function handleWheel(e) {
+      this.progress += e.deltaY;
+      this.move();
+    }
+  }, {
+    key: "handleTouchStart",
+    value: function handleTouchStart(e) {
+      e.preventDefault();
+      this.dragging = true;
+      this.startX = e.clientX || e.touches[0].clientX;
+      this.el.classList.add("dragging");
+    }
+  }, {
+    key: "handleTouchMove",
+    value: function handleTouchMove(e) {
+      if (!this.dragging) return false;
+      var x = e.clientX || e.touches[0].clientX;
+      this.progress += (this.startX - x) * 2.5;
+      this.startX = x;
+      this.move();
+    }
+  }, {
+    key: "handleTouchEnd",
+    value: function handleTouchEnd() {
+      this.dragging = false;
+      this.el.classList.remove("dragging");
+    }
+  }, {
+    key: "move",
+    value: function move() {
+      this.progress = clamp(this.progress, 0, this.maxScroll);
+    }
+  }, {
+    key: "events",
+    value: function events() {
+      window.addEventListener("resize", this.calculate);
+      window.addEventListener("wheel", this.handleWheel);
+      this.el.addEventListener("touchstart", this.handleTouchStart);
+      window.addEventListener("touchmove", this.handleTouchMove);
+      window.addEventListener("touchend", this.handleTouchEnd);
+      window.addEventListener("mousedown", this.handleTouchStart);
+      window.addEventListener("mousemove", this.handleTouchMove);
+      window.addEventListener("mouseup", this.handleTouchEnd);
+      document.body.addEventListener("mouseleave", this.handleTouchEnd);
+    }
+  }, {
+    key: "raf",
+    value: function raf() {
+      var _this2 = this;
+      this.x = lerp(this.x, this.progress, 0.1);
+      this.playrate = this.x / this.maxScroll;
+      this.wrap.style.transform = "translateX(".concat(-this.x, "px)");
+      this.bar.style.transform = "scaleX(".concat(0.18 + this.playrate * 0.82, ")");
+      this.speed = Math.min(100, this.oldX - this.x);
+      this.oldX = this.x;
+      this.scale = lerp(this.scale, this.speed, 0.1);
+      this.items.forEach(function (item) {
+        item.style.transform = "scale(".concat(1 - Math.abs(_this2.speed) * 0.005, ")");
+        item.querySelector("img").style.transform = "scaleX(".concat(1 + Math.abs(_this2.speed) * 0.004, ")");
+      });
+    }
+  }]);
+}();
+var scroll = new DragScroll({
+  el: ".carousel",
+  wrap: ".carousel-wrapper",
+  item: ".carousel-item",
+  bar: ".carousel-progress-bar"
+});
+var _animateScroll = function animateScroll() {
+  requestAnimationFrame(_animateScroll);
+  scroll.raf();
+};
+_animateScroll();
 },{"split-type":"node_modules/split-type/dist/index.js","gsap":"node_modules/gsap/index.js","../Asset/1.jpg":"Asset/1.jpg","../Asset/2.jpg":"Asset/2.jpg","../Asset/3.jpg":"Asset/3.jpg","../Asset/4.jpg":"Asset/4.jpg","../Asset/5.jpg":"Asset/5.jpg","../Asset/6.jpg":"Asset/6.jpg"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -7013,7 +7141,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54315" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53830" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
