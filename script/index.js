@@ -321,3 +321,23 @@ const animateScroll = () => {
   scroll.raf();
 };
 animateScroll();
+
+// FAQ section
+const faqContainer = document.querySelectorAll(".faq-container");
+
+function removeActive() {
+  faqContainer.forEach((element) => {
+    element.classList.remove("faq-active");
+    element.querySelector("p").style.maxHeight = "0px";
+    element.querySelector(".icon").textContent = "+";
+  });
+}
+faqContainer.forEach((question) => {
+  question.addEventListener("click", function (e) {
+    removeActive();
+    e.target.closest(".faq-container").classList.add("faq-active");
+    e.target.closest(".faq-container").querySelector("p").style.maxHeight =
+      e.target.closest(".faq-container").querySelector("p").scrollHeight + "px";
+    e.target.closest(".faq-container").querySelector(".icon").textContent = "-";
+  });
+});

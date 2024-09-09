@@ -7116,6 +7116,24 @@ var _animateScroll = function animateScroll() {
   scroll.raf();
 };
 _animateScroll();
+
+// FAQ section
+var faqContainer = document.querySelectorAll(".faq-container");
+function removeActive() {
+  faqContainer.forEach(function (element) {
+    element.classList.remove("faq-active");
+    element.querySelector("p").style.maxHeight = "0px";
+    element.querySelector(".icon").textContent = "+";
+  });
+}
+faqContainer.forEach(function (question) {
+  question.addEventListener("click", function (e) {
+    removeActive();
+    e.target.closest(".faq-container").classList.add("faq-active");
+    e.target.closest(".faq-container").querySelector("p").style.maxHeight = e.target.closest(".faq-container").querySelector("p").scrollHeight + "px";
+    e.target.closest(".faq-container").querySelector(".icon").textContent = "-";
+  });
+});
 },{"split-type":"node_modules/split-type/dist/index.js","gsap":"node_modules/gsap/index.js","../Asset/1.jpg":"Asset/1.jpg","../Asset/2.jpg":"Asset/2.jpg","../Asset/3.jpg":"Asset/3.jpg","../Asset/4.jpg":"Asset/4.jpg","../Asset/5.jpg":"Asset/5.jpg","../Asset/6.jpg":"Asset/6.jpg"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -7141,7 +7159,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53830" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63583" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
