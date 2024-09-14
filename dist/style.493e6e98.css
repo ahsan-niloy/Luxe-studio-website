@@ -710,6 +710,7 @@ header {
   gap: 1rem;
   align-items: center;
   justify-content: space-around;
+  flex-direction: column;
 }
 .celebrate p {
   color: var(--cf-neutral-gray-400);
@@ -865,8 +866,8 @@ header {
 /* CONTACT US SECTION STARTS  */
 .contact-us {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .contact-us-img {
@@ -893,9 +894,72 @@ header {
   display: grid;
   place-content: center;
   overflow: hidden;
-  object-fit: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#mlb2-18022563.ml-form-embedContainer .ml-form-embedWrapper {
+  width: 100% !important;
+  max-width: none !important;
+}
+#mlb2-18022563.ml-form-embedContainer
+  .ml-form-embedWrapper
+  .ml-form-embedBody
+  .ml-form-fieldRow
+  input,
+#mlb2-18022563.ml-form-embedContainer
+  .ml-form-embedWrapper
+  .ml-form-embedBody
+  .ml-form-horizontalRow
+  input,
+#mlb2-18022563.ml-form-embedContainer
+  .ml-form-embedWrapper
+  .ml-form-embedBody
+  .ml-form-fieldRow
+  textarea {
+  padding: 20px !important;
 }
 /* CONTACT US SECTION ENDS  */
+/* FOOTER SECTION STARTS */
+footer {
+  background-color: #cac9b6;
+  text-align: center;
+  white-space: nowrap;
+}
+
+footer ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  margin-right: 0px;
+}
+footer ul li a {
+  color: var(--cf-primary-400);
+}
+footer ul:nth-child(1) {
+  padding-top: var(--ss-ms-xl);
+}
+
+footer hr {
+  border: 1px solid var(--cf-primary-400);
+}
+
+.footer-more-info {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  text-align: center;
+  gap: 1rem;
+  padding: 2rem;
+  font-family: var(--ff-inter-regular);
+  color: var(--cf-primary-400);
+}
+
+.luxe-studio-footer-logo img {
+  width: 100%;
+}
+/* FOOTER SECTION ENDS */
 /* Animation */
 /* text animation  */
 .text {
@@ -931,6 +995,12 @@ header {
   }
   .service:hover.service button {
     display: flex;
+  }
+  .contact-us {
+    flex-direction: row;
+  }
+  .celebrate {
+    flex-direction: row;
   }
 }
 
@@ -1033,6 +1103,9 @@ header {
   #testomonial-img {
     display: none;
   }
+  .faq-container .icon {
+    display: none;
+  }
 }
 @media (max-width: 550px) {
   .testomonial-phone {
@@ -1080,7 +1153,7 @@ header {
     font-size: 0.875rem;
   }
   .label-3 {
-    font-size: 0.75rem;
+    font-size: 1.5rem;
   }
   .label-4 {
     font-size: 3rem;
@@ -1115,9 +1188,6 @@ header {
   }
   .service span {
     font-size: 1.2rem;
-  }
-  .faq-container .icon {
-    display: none;
   }
 }
 
