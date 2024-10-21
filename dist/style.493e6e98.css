@@ -821,6 +821,9 @@ header {
   position: relative;
   border-bottom: 1px solid var(--cf-neutral-gray-400);
 }
+.last-faq-container {
+  border-bottom: none;
+}
 .faq-container .icon {
   font-size: 4rem;
   font-family: var(--ff-clashDisplay-regular);
@@ -862,6 +865,7 @@ header {
   color: var(--cf-neutral-white-100);
   margin-top: 1rem;
 }
+
 /* FAQ SECTION ENDS  */
 /* CONTACT US SECTION STARTS  */
 .contact-us {
