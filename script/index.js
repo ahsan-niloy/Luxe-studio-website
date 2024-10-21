@@ -1,6 +1,6 @@
 "use strict";
 import SplitType from "split-type";
-
+("");
 // nav icon & animation
 
 const icon = document.getElementById("nav-icon4");
@@ -177,12 +177,21 @@ function removeActive() {
     element.querySelector(".icon").textContent = "+";
   });
 }
+
 faqContainer.forEach((question) => {
   question.addEventListener("click", function (e) {
+    const clickedElement = e.target.closest(".faq-container");
+    const isActive = clickedElement.classList.contains("faq-active");
+
+    // First, collapse all sections
     removeActive();
-    e.target.closest(".faq-container").classList.add("faq-active");
-    e.target.closest(".faq-container").querySelector("p").style.maxHeight =
-      e.target.closest(".faq-container").querySelector("p").scrollHeight + "px";
-    e.target.closest(".faq-container").querySelector(".icon").textContent = "-";
+
+    // If the clicked section was already active, don't reopen it
+    if (!isActive) {
+      clickedElement.classList.toggle("faq-active");
+      clickedElement.querySelector("p").style.maxHeight =
+        clickedElement.querySelector("p").scrollHeight + "px";
+      clickedElement.querySelector(".icon").textContent = "-";
+    }
   });
 });

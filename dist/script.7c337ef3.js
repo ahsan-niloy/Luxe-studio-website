@@ -1445,6 +1445,7 @@ function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = 
 function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+"";
 // nav icon & animation
 
 var icon = document.getElementById("nav-icon4");
@@ -1620,10 +1621,18 @@ function removeActive() {
 }
 faqContainer.forEach(function (question) {
   question.addEventListener("click", function (e) {
+    var clickedElement = e.target.closest(".faq-container");
+    var isActive = clickedElement.classList.contains("faq-active");
+
+    // First, collapse all sections
     removeActive();
-    e.target.closest(".faq-container").classList.add("faq-active");
-    e.target.closest(".faq-container").querySelector("p").style.maxHeight = e.target.closest(".faq-container").querySelector("p").scrollHeight + "px";
-    e.target.closest(".faq-container").querySelector(".icon").textContent = "-";
+
+    // If the clicked section was already active, don't reopen it
+    if (!isActive) {
+      clickedElement.classList.toggle("faq-active");
+      clickedElement.querySelector("p").style.maxHeight = clickedElement.querySelector("p").scrollHeight + "px";
+      clickedElement.querySelector(".icon").textContent = "-";
+    }
   });
 });
 },{"split-type":"node_modules/split-type/dist/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
