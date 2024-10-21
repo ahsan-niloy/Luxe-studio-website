@@ -195,6 +195,7 @@ button:active {
 body,
 html {
   background-color: var(--cf-secondary-400);
+  overflow-x: hidden;
 }
 
 /* nav list styleing  */
@@ -1049,7 +1050,7 @@ footer hr {
   /* Hidden by default */
   .nav-menu {
     position: fixed;
-    top: -100%;
+    top: -120%;
     left: 0;
     height: 100vh;
     width: 100%;
@@ -1071,6 +1072,7 @@ footer hr {
     display: block;
     text-align: center;
     font-size: 4rem;
+    margin-right: 0px;
   }
   .nav-menu ul li a {
     font-family: var(--ff-clashDisplay-medium);
