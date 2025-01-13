@@ -34,8 +34,8 @@ To set up the Luxe Studio Website locally, follow these steps:
 ### Clone the Repository:
 
 ```bash
-git clone https://github.com/ahsan201/luxe-studio-website.git
-cd luxe-studio-website
+git clone https://github.com/ahsan201/Luxe-studio-website.git
+cd Luxe-studio-website
 ```
 
 ### Install Dependencies:
