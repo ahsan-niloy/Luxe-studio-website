@@ -1,0 +1,62 @@
+---
+import { AstroFont } from "astro-font";
+import { join } from "node:path";
+---
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<AstroFont
+      config={[
+        {
+          name: "ClashDisplay",
+          src: [
+            {
+              style: 'normal',
+              weight: '400',
+              path: join(process.cwd(), 'public', 'fonts', 'ClashDisplay-Regular.woff2')
+            },
+            {
+              style: 'medium',
+              weight: '500',
+              path: join(process.cwd(), 'public', 'fonts', 'ClashDisplay-Medium.woff2')
+            },{
+              style: 'light',
+              weight: '300',
+              path: join(process.cwd(), 'public', 'fonts', 'ClashDisplay-Light.woff2')
+            },
+            {
+              style: 'semi-bold',
+              weight: '600',
+              path: join(process.cwd(), 'public', 'fonts', 'ClashDisplay-Semibold.woff2')
+            },{
+              style: 'bold',
+              weight: '700',
+              path: join(process.cwd(), 'public', 'fonts', 'ClashDisplay-Bold.woff2')
+            },
+          ],
+          preload: false,
+          display: "swap",
+          selector: "body",
+          fallback: "sans-serif",
+        },
+      ]}
+    />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro Basics</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
+<style>
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		height: 100%;
+	}
+</style>
