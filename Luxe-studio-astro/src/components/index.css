@@ -1,0 +1,46 @@
+body {
+  background-color: #f0eee8;
+  position: relative;
+  width: 100vw;
+  overflow-x: hidden;
+}
+hr {
+  border-color: #717342;
+}
+
+/* BUTTON */
+button {
+  display: flex;
+  padding: 8px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.primary-button {
+  border-radius: 16px;
+  background: #717342;
+  color: white;
+  font-weight: 500;
+}
+
+/* NAV  */
+nav {
+}
+.backgorund-blur {
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(7.5px);
+  -webkit-backdrop-filter: blur(7.5px);
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.1)
+  );
+  -webkit-mask-image: linear-gradient(to bottom, black 10%, transparent 80%);
+  mask-image: linear-gradient(to bottom, black 10%, transparent 80%);
+}
+
+/* HEADER  */
