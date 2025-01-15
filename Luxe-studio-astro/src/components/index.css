@@ -18,6 +18,17 @@ button {
   white-space: nowrap;
 }
 
+.secondary-button {
+  display: flex;
+  width: 100%;
+  padding: 12px 20px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  color: #717342;
+  border-radius: 100px;
+}
+
 .primary-button {
   border-radius: 16px;
   background: #717342;
@@ -44,3 +55,40 @@ nav {
 }
 
 /* HEADER  */
+
+/* OUR EVENT  */
+.event-date {
+  padding: 10px 16px;
+  background: rgba(135, 135, 135, 0.1);
+  backdrop-filter: blur(75px);
+  border-radius: 2rem;
+  max-width: min-content;
+  white-space: nowrap;
+}
+.event-cards {
+  overflow-y: scroll;
+}
+
+/* swipper  */
+/* .swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  Center slide text vertically
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+} */
