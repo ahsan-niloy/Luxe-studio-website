@@ -69,26 +69,37 @@ nav {
   overflow-y: scroll;
 }
 
-/* swipper  */
-/* .swiper {
-  width: 100%;
-  height: 100%;
+/* OUR SERVICE  */
+.service-item {
+  transition: 300ms ease;
+  border-bottom: 1px solid #717342;
+  padding: 2rem;
+  min-height: 250px;
+}
+.service-image {
+  height: 0px; /* Start height */
+  overflow: hidden; /* Prevent content from showing during transition */
+  transition: height 300ms ease; /* Animate height */
 }
 
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
+.service-item:hover {
+  color: white;
+  background-color: #717342;
+  border-radius: 2rem;
+  cursor: pointer;
 
-  Center slide text vertically
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  .service-number {
+    color: white;
+  }
+  .service-image {
+    height: 250px; /* Target height for animation */
+  }
+  .service-text-btn {
+    display: block;
+  }
 }
-
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-} */
+@media (max-width: 767px) {
+  .service-item {
+    min-height: 100px;
+  }
+}

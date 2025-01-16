@@ -72,7 +72,7 @@ export default function OurEvent() {
           {data.map((card, key) => (
             <SwiperSlide key={key} className="">
               <div
-                className="event-card mx-auto h-[400px] w-[300px] overflow-hidden rounded-[1.5rem] p-4 relative"
+                className="event-card mx-auto  h-[400px] w-[300px] overflow-hidden rounded-xl p-4 relative"
                 style={{
                   backgroundImage: `url(${card.backgroundImage})`,
                   backgroundSize: "cover",
@@ -106,7 +106,7 @@ export default function OurEvent() {
           {data.map((card, key) => (
             <div
               key={key}
-              className="event-card h-[400px] w-[300px] overflow-hidden rounded-[1.5rem] p-4 relative"
+              className="event-card h-[450px] w-[350px] overflow-hidden rounded-xl p-4 relative"
               style={{
                 backgroundImage: `url(${card.backgroundImage})`,
                 backgroundSize: "cover",
