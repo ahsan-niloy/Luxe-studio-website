@@ -4,6 +4,8 @@ import Header from '../components/home-page/Header';
 import TextSection from "../components/home-page/TextSection";
 import OurEvent from "../components/home-page/OurEvent";
 import OurService from "../components/home-page/OurService";
+import Celebrate from "../components/home-page/Celebrate"
+import NiceWords from "../components/home-page/NiceWords";
 import Footer from "../components/Footer";
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
@@ -17,5 +19,7 @@ import { Image } from 'astro:assets';
 	<TextSection/>
 	<OurEvent client:load/>
 	<OurService/>
+	<Celebrate/>
+	<NiceWords client:idle/>
 	<Footer/>
 </Layout>

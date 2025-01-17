@@ -1,6 +1,6 @@
 export default function TextSection() {
   return (
-    <div className="text-[#717342] text-center py-[6rem] px-[5vw] md:px-[10vw] whitespace-nowrap">
+    <div className="text-[#717342] text-center mt-[4rem] py-[6rem] px-[5vw] md:px-[10vw] whitespace-nowrap">
       <div className="text-[4.5vw] lg:text-[50px]">
         Transforming Your Wedding Day into{" "}
       </div>
