@@ -9,6 +9,8 @@ import NiceWords from "../components/home-page/NiceWords";
 import Footer from "../components/Footer";
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
+import Faq from '../components/home-page/Faq';
+import ContactUs from '../components/home-page/ContactUs';
 
 
 ---
@@ -21,5 +23,7 @@ import { Image } from 'astro:assets';
 	<OurService/>
 	<Celebrate/>
 	<NiceWords client:idle/>
+	<Faq client:idle/>
+	<ContactUs client:load/>
 	<Footer/>
 </Layout>

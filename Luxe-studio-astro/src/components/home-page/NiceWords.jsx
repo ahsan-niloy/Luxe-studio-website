@@ -59,7 +59,7 @@ export default function NiceWords() {
                   fade ? "opacity-100" : "opacity-0"
                 }`}
               >
-                <p className="max-w-[300px]">{currentTestimonial.text}</p>
+                <p className="max-w-[400px]">{currentTestimonial.text}</p>
                 <span className="customer-name font-semibold text-lg text-[#717342] block mt-1">
                   {currentTestimonial.name}
                 </span>

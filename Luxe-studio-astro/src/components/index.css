@@ -53,6 +53,9 @@ nav {
   -webkit-mask-image: linear-gradient(to bottom, black 10%, transparent 80%);
   mask-image: linear-gradient(to bottom, black 10%, transparent 80%);
 }
+nav ul li a {
+  text-shadow: 1px 1px 5px black;
+}
 
 /* HEADER  */
 
@@ -105,3 +108,8 @@ nav {
 }
 
 /* testomonial  */
+
+/* portfolio images  */
+.portfolio-images {
+  columns: 300px;
+}
