@@ -135,5 +135,15 @@ nav {
 
 /* portfolio images  */
 .portfolio-images {
-  columns: 300px;
+  columns: 250px;
+}
+@media (max-width: 700px) {
+  .portfolio-images {
+    columns: 150px;
+  }
+}
+@media (min-width: 1200px) {
+  .portfolio-images {
+    columns: 300px;
+  }
 }
