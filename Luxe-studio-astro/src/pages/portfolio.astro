@@ -4,13 +4,15 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import PortfolioCover from "../components/portfolio-page/portfolioCover";
 import Layout from "../layouts/Layout.astro";
+import ContactUs from '../components/home-page/ContactUs';
+
 
 // Dynamically import all images from the folder
 const images = import.meta.glob('../assets/portfolio-images/*.jpg', { eager: true });
 
 const imageArray = Object.entries(images).map(([path, module]) => ({
   src: module.default,
-  alt: path.split('/').pop()?.split('.')[0], // Use filename as alt text
+  alt: "Luxe Studios protfolio picture", // Use filename as alt text
 }));
 ---
 
@@ -19,8 +21,9 @@ const imageArray = Object.entries(images).map(([path, module]) => ({
   <PortfolioCover>
   <div class="">
     {imageArray.map((image, index) => (
-      <Image key={index} src={image.src} alt={image.alt} loading="lazy" class="w-full mb-4 rounded-xl" />
+      <Image src={image.src} alt={image.alt} loading="lazy" class="w-full mb-4 rounded-xl" />
     ))}
   </div></PortfolioCover>
+  <ContactUs client:load/>
   <Footer />
 </Layout>

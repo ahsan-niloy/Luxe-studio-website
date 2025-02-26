@@ -56,7 +56,7 @@ export default function OurEvent() {
 
   return (
     <div>
-      <Subheading>Our Events</Subheading>
+      <Subheading>Our Works</Subheading>
       {isMobile ? (
         <Swiper
           slidesPerView={1}

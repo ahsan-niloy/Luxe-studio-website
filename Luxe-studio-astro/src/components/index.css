@@ -7,7 +7,29 @@ body {
 hr {
   border-color: #717342;
 }
+p {
+  word-spacing: 2px;
+}
 
+.gradient {
+  background: rgb(240, 238, 232);
+  background: -moz-linear-gradient(
+    0deg,
+    rgba(240, 238, 232, 1) 20%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background: -webkit-linear-gradient(
+    0deg,
+    rgba(240, 238, 232, 1) 20%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background: linear-gradient(
+    0deg,
+    rgba(240, 238, 232, 1) 20%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f0eee8",endColorstr="#ffffff",GradientType=1);
+}
 /* BUTTON */
 button {
   display: flex;
@@ -53,8 +75,10 @@ nav {
   -webkit-mask-image: linear-gradient(to bottom, black 10%, transparent 80%);
   mask-image: linear-gradient(to bottom, black 10%, transparent 80%);
 }
-nav ul li a {
-  text-shadow: 1px 1px 5px black;
+@media (min-width: 600px) {
+  nav ul li a {
+    text-shadow: 1px 1px 5px black;
+  }
 }
 
 /* HEADER  */

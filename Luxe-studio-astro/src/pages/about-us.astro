@@ -1,0 +1,17 @@
+---
+import Layout from "../layouts/Layout.astro";
+import AboutUs from "../components/aboutUs-page/AboutUs";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import ContactUs from '../components/home-page/ContactUs';
+
+
+
+---
+
+<Layout>
+    <Navbar/>
+    <AboutUs/>
+    <ContactUs client:load/>
+    <Footer/>
+</Layout>
