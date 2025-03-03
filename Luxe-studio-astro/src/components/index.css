@@ -147,3 +147,9 @@ nav {
     columns: 300px;
   }
 }
+
+/* contact us  */
+.contact-us-info {
+  background-image: url("/assets/contact-us.jpg");
+  padding: 8rem;
+}

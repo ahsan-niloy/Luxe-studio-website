@@ -3,13 +3,13 @@ import MailerLiteIntegration from "../MailerLiteIntegration";
 
 export default function ContactUs() {
   return (
-    <section className="flex flex-col gap-10 md:flex-row justify-between my-[8rem]">
+    <section className="flex flex-col gap-10 md:flex-row justify-between my-[6rem]">
       <div className=" w-full">
         <Subheading className="mt-[0px]">Contact Us</Subheading>
         <MailerLiteIntegration />
       </div>
-      <div className="relative overflow-hidden rounded-[2rem] max-w-[500px] mx-[5vw] md:mr-[10vw]">
-        <div className="p-4 absolute bg-[#F0EEE8] rounded-xl top-[25%] left-[18%] sm:top-[33%] sm:left-[22%]">
+      <div className="grid place-content-center overflow-hidden rounded-[2rem] max-w-[500px] mx-[5vw] md:mr-[10vw] contact-us-info">
+        <div className="p-4  bg-[#F0EEE8] rounded-xl">
           <address className="not-italic">
             <span>Email</span>
             <p>
@@ -22,11 +22,6 @@ export default function ContactUs() {
             </p>
           </address>
         </div>
-        <img
-          src="/assets/contact-us.jpg"
-          alt="A visual representation of contacting Luxe Studio"
-          className="w-full h-full object-cover "
-        />
       </div>
     </section>
   );

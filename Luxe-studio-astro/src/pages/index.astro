@@ -12,7 +12,17 @@ import { Image } from 'astro:assets';
 import Faq from '../components/home-page/Faq';
 import ContactUs from '../components/home-page/ContactUs';
 
+import PortfolioImages from "../components/portfolio-page/PortfolioImages";
+import Button from '../components/Button';
+// Dynamically import all images from the folder
+const images = import.meta.glob("../assets/portfolio-peek/*.jpg", {
+  eager: true,
+});
 
+const imageArray = Object.entries(images).map(([path, module]) => ({
+  src: module.default,
+  alt: "Luxe Studios protfolio picture", // Use filename as alt text
+}));
 ---
 
 <Layout>
@@ -21,9 +31,26 @@ import ContactUs from '../components/home-page/ContactUs';
 	<TextSection/>
 	<OurEvent client:load/>
 	<OurService/>
+	<div>
+	<PortfolioImages>
+		{
+		  <div>
+			{imageArray.map((image, index) => (
+			  <Image
+				src={image.src}
+				alt={image.alt}
+				loading="lazy"
+				class="w-full mb-4 rounded-xl"
+			  />
+			))}
+		  </div>
+		}
+	  </PortfolioImages>
+	  <div class="grid place-content-center mt-[-2rem] "><Button className='text-[1.5rem] '>See More</Button></div>
+	</div>
 	<Celebrate/>
 	<NiceWords client:idle/>
 	<Faq client:idle/>
-	<ContactUs client:load/>
+	<ContactUs client:idle/>
 	<Footer/>
 </Layout>

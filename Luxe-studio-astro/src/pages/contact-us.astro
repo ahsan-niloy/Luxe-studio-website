@@ -1,4 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro"
-import 
+import Navbar from "../components/Navbar"
+import Footer from "../components/Footer"
+import ContactUsElement from "../components/home-page/ContactUs"
+import PhotoHeader from "../../src/components/PhotoHeader"
+import BookCall from "../components/contact-us/BookCall"
+
 ---
+
+<Layout>
+    <Navbar/>
+    <PhotoHeader image={"/assets/portfolio-cover-2.jpg"}><h1 class="text-[2rem] leading-10 md:text-[3rem] text-white absolute bottom-0 px-[5vw] md:px-[10vw]">
+        The magic starts here</h1></PhotoHeader>
+        <BookCall/>
+    <ContactUsElement/>
+    <Footer/>
+</Layout>
