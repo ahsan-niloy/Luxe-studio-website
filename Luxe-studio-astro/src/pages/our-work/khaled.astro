@@ -1,0 +1,37 @@
+---
+import Layout from "../../layouts/Layout.astro"
+import Navbar from "../../components/Navbar"
+import NiceWords from "../../components/home-page/NiceWords"
+import ContactUs from "../../components/home-page/ContactUs"
+import Footer from "../../components/Footer"
+import WorkHeading from "../../components/our-work-page/WorkhHeading"
+// img 
+import { Image } from "astro:assets";
+
+// Dynamically import all images from the folder
+const images = import.meta.glob('../../assets/portfolio-images/*.jpg', { eager: true });
+
+const imageArray = Object.entries(images)
+  .filter(([path]) => path.includes("khaled")) // ✅ Filter images with "niki" in the filename
+  .map(([path, module]) => ({
+    src: module.default,
+    alt: "Luxe Studios portfolio picture",
+  }));
+
+  // data
+  const info = {name:"Khaled & Albina",location:"Sahali, Kamloops", description: "Capturing Khaled and Albina’s photoshoot in Sahali, Kamloops was an absolute joy. With the stunning natural beauty of Sahali as the backdrop, their love and connection truly shined in every frame. The golden light, the breathtaking views, and their effortless chemistry made this session feel warm, romantic, and full of life."}
+---
+
+<Layout>
+	<Navbar client:load/>
+    <WorkHeading client:load name={info.name} location={info.location} description={info.description}>
+      <div>
+        {imageArray.map((image, index) => (
+          <Image src={image.src} alt={image.alt} loading="lazy" class="w-full mb-4 rounded-xl" />
+        ))}
+      </div>
+    </WorkHeading>
+    <NiceWords client:idle/>
+    <ContactUs client:load/>
+	<Footer/>
+</Layout>

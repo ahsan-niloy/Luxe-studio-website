@@ -1,0 +1,37 @@
+---
+import Layout from "../../layouts/Layout.astro"
+import Navbar from "../../components/Navbar"
+import NiceWords from "../../components/home-page/NiceWords"
+import ContactUs from "../../components/home-page/ContactUs"
+import Footer from "../../components/Footer"
+import WorkHeading from "../../components/our-work-page/WorkhHeading"
+// img 
+import { Image } from "astro:assets";
+
+// Dynamically import all images from the folder
+const images = import.meta.glob('../../assets/portfolio-images/*.jpg', { eager: true });
+
+const imageArray = Object.entries(images)
+  .filter(([path]) => path.includes("niki")) // ✅ Filter images with "niki" in the filename
+  .map(([path, module]) => ({
+    src: module.default,
+    alt: "Luxe Studios portfolio picture",
+  }));
+
+  // data
+  const info = {name:"Nikki & Ryan",location:"Tranquille, Kamloops.", description: "We had an amazing time capturing Niki and Ryans couple photoshoot at Tranquille, Kamloops. With its open fields, rustic charm, and golden light, this location was the perfect setting for a romantic and natural photoshoot. Niki, a talented photographer from Kamloops, brought a beautiful energy to the session, and Ryan’s calm presence made their connection even more special. As the sun set, every moment felt warm, real, and full of love. We focused on capturing their laughter, soft glances, and the quiet moments that truly tell their story."}
+---
+
+<Layout>
+	<Navbar client:load/>
+    <WorkHeading client:load name={info.name} location={info.location} description={info.description}>
+      <div>
+        {imageArray.map((image, index) => (
+          <Image src={image.src} alt={image.alt} loading="lazy" class="w-full mb-4 rounded-xl" />
+        ))}
+      </div>
+    </WorkHeading>
+    <NiceWords client:idle/>
+    <ContactUs client:load/>
+	<Footer/>
+</Layout>

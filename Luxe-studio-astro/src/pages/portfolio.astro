@@ -19,7 +19,7 @@ const imageArray = Object.entries(images).map(([path, module]) => ({
 <Layout>
   <Navbar />
   <PortfolioCover>
-  <div class="">
+  <div>
     {imageArray.map((image, index) => (
       <Image src={image.src} alt={image.alt} loading="lazy" class="w-full mb-4 rounded-xl" />
     ))}

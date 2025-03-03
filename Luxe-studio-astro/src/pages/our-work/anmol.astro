@@ -1,0 +1,37 @@
+---
+import Layout from "../../layouts/Layout.astro"
+import Navbar from "../../components/Navbar"
+import NiceWords from "../../components/home-page/NiceWords"
+import ContactUs from "../../components/home-page/ContactUs"
+import Footer from "../../components/Footer"
+import WorkHeading from "../../components/our-work-page/WorkhHeading"
+// img 
+import { Image } from "astro:assets";
+
+// Dynamically import all images from the folder
+const images = import.meta.glob('../../assets/portfolio-images/*.jpg', { eager: true });
+
+const imageArray = Object.entries(images)
+  .filter(([path]) => path.includes("anmol")) // ✅ Filter images with "niki" in the filename
+  .map(([path, module]) => ({
+    src: module.default,
+    alt: "Luxe Studios portfolio picture",
+  }));
+
+  // data
+  const info = {name:"Anmol & Nidhi",location:"Hill Side, Kamloops", description: "Capturing Anmol and Nidhi’s photoshoot in Hill Side, Kamloops was truly special. Their home’s breathtaking view provided a stunning backdrop for an intimate and elegant session. As an Indian couple, they brought a beautiful cultural charm, and their deep connection, warm smiles, and effortless grace made every moment feel timeless. With the perfect mix of panoramic views and cozy home vibes, we captured their love, laughter, and togetherness in the most natural way."}
+---
+
+<Layout>
+	<Navbar client:load/>
+    <WorkHeading client:load name={info.name} location={info.location} description={info.description}>
+      <div>
+        {imageArray.map((image, index) => (
+          <Image src={image.src} alt={image.alt} loading="lazy" class="w-full mb-4 rounded-xl" />
+        ))}
+      </div>
+    </WorkHeading>
+    <NiceWords client:idle/>
+    <ContactUs client:load/>
+	<Footer/>
+</Layout>
