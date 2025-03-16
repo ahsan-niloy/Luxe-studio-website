@@ -12,7 +12,7 @@ import { Image } from 'astro:assets';
 import Faq from '../components/home-page/Faq';
 import ContactUs from '../components/home-page/ContactUs';
 
-import PortfolioImages from "../components/portfolio-page/PortfolioImages";
+import PortfolioImages from "../components/home-page/PortfolioImages";
 import Button from '../components/Button';
 // Dynamically import all images from the folder
 const images = import.meta.glob("../assets/portfolio-peek/*.jpg", {
@@ -46,7 +46,7 @@ const imageArray = Object.entries(images).map(([path, module]) => ({
 		  </div>
 		}
 	  </PortfolioImages>
-	  <div class="grid place-content-center mt-[-2rem] "><Button className='text-[1.5rem] '>See More</Button></div>
+	  <div class="grid place-content-center mt-[-2rem] "><Button className='text-[1.5rem]'>See More</Button></div>
 	</div>
 	<Celebrate/>
 	<NiceWords client:idle/>
