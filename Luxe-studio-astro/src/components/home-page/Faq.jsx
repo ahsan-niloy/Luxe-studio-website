@@ -49,7 +49,7 @@ export default function Faq() {
     <div className="">
       <Subheading>FAQ</Subheading>
       <div className="max-w-4xl mx-auto px-4">
-        <div className="space-y-6 mt-6 bg-[#F3F5F6] rounded-[1rem] p-2">
+        <div className="mt-6 bg-[#F3F5F6] rounded-[1rem] p-2">
           {faqData.map((faq, index) => (
             <div
               key={faq.id}
