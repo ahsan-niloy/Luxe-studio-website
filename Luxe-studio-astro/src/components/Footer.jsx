@@ -4,33 +4,36 @@ export default function Footer() {
       <div>
         <ul className="flex justify-center gap-10 flex-wrap">
           <li>
-            <a href="#">Home</a>
+            <a href="/">Home</a>
           </li>
 
           <li>
-            <a href="#">Package</a>
+            <a href="/packages">Package</a>
           </li>
 
           <li>
-            <a href="#">Portfolio</a>
+            <a href="/portfolio">Portfolio</a>
           </li>
 
           <li>
-            <a href="#">Contact Us</a>
-          </li>
-
-          <li>
-            <a href="#">FAQ</a>
+            <a href="/contact-us">Contact Us</a>
           </li>
         </ul>
       </div>
       <div>
         <ul className="flex justify-center gap-10 flex-wrap">
           <li>
-            <a href="#">Instagram</a>
+            <a href="https://www.instagram.com/luxestudiosca/" target="_blank">
+              Instagram
+            </a>
           </li>
           <li>
-            <a href="#">Facebook</a>
+            <a
+              href="https://www.facebook.com/people/Luxe-Studios/61562632094466/"
+              target="_blank"
+            >
+              Facebook
+            </a>
           </li>
         </ul>
       </div>
@@ -38,8 +41,8 @@ export default function Footer() {
       <div className="flex justify-center flex-wrap md:justify-between gap-2">
         <div>©2024 All right reserved</div>
         <div className="flex gap-6">
-          <a href="#">Terms & Conditions</a>
-          <a href="#">Privacy Policy</a>
+          <a href="/terms-and-conditions">Terms & Conditions</a>
+          <a href="/privacy-policy">Privacy Policy</a>
         </div>
       </div>
       <div>

@@ -1,85 +1,82 @@
-import { useState, useRef, useEffect } from "react";
-import Lottie from "lottie-react";
+import { useState, useEffect } from "react";
 import Button from "./Button";
+import { Sling as Hamburger } from "hamburger-react";
 
 export default function Navbar({ textColor = "#FFFFFF" }) {
   const [showNavMenu, setShowNavMenu] = useState(false);
-  const [animationData, setAnimationData] = useState(null);
   const navTextDropdownColor = "#000";
-  const lottieRef = useRef(null);
-
-  // Load the Lottie animation dynamically from public folder
-  useEffect(() => {
-    fetch("/assets/menu.json")
-      .then((response) => response.json())
-      .then((data) => setAnimationData(data))
-      .catch((error) =>
-        console.error("Error loading Lottie animation:", error)
-      );
-  }, []);
 
   function toggleNavMenu() {
     setShowNavMenu((prev) => !prev);
-
-    if (lottieRef.current) {
-      showNavMenu
-        ? lottieRef.current.goToAndPlay(99, true) // Play closing animation
-        : lottieRef.current.goToAndPlay(0, true); // Play opening animation (adjust frames as needed)
-    }
   }
+
+  // Prevent scrolling when mobile menu is open
+  useEffect(() => {
+    if (showNavMenu) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+  }, [showNavMenu]);
 
   return (
     <>
-      <nav className="flex flex-row justify-between items-center absolute w-full z-20 left-0 px-[5vw] md:px-[10vw] py-4">
+      <nav
+        className="flex flex-row justify-between items-center absolute w-full z-20 left-0 px-[5vw] md:px-[10vw] py-4"
+        role="navigation"
+      >
         <div>
-          <img
-            src="/assets/final-logo.svg"
-            alt="Luxe Studios Logo"
-            className="w-[60px] md:w-full"
-          />
-        </div>
-        <div className="block md:hidden absolute right-0 z-40">
-          <button onClick={toggleNavMenu} className="w-[100px] h-[60px]">
-            {animationData && (
-              <Lottie
-                lottieRef={lottieRef}
-                animationData={animationData}
-                loop={false}
-                autoplay={false}
-              />
-            )}
-          </button>
+          <a href="/">
+            <img
+              src="/assets/final-logo.svg"
+              alt="Luxe Studios Logo"
+              className="w-[60px] md:w-full"
+            />
+          </a>
         </div>
 
+        {/* Hamburger Menu */}
+        <div className="block md:hidden absolute right-[5vw] z-40">
+          <Hamburger
+            toggled={showNavMenu}
+            toggle={toggleNavMenu}
+            aria-label="Toggle navigation menu"
+            color={!showNavMenu ? "#fff" : "#717342"}
+            rounded
+            hideOutline={false}
+          />
+        </div>
+
+        {/* Navigation Links */}
         <div>
           <ul
-            className={
+            className={`${
               showNavMenu
-                ? "absolute z-30 top-0 left-0 text-[#717342] bg-[#f0eee8] flex flex-col justify-center items-center w-full h-screen text-[2rem] gap-6"
-                : " hidden md:flex md:flex-row md:gap-4 items-center"
-            }
-            style={{
-              color: showNavMenu ? navTextDropdownColor : textColor,
-            }}
+                ? "absolute z-30 top-0 left-0 text-[#717342] bg-[#f0eee8] flex flex-col justify-center items-center w-full h-screen text-[2rem] gap-6 transition-all duration-300 ease-in-out"
+                : "hidden md:flex md:flex-row md:gap-4 items-center"
+            }`}
+            style={{ color: showNavMenu ? navTextDropdownColor : textColor }}
           >
             <li>
-              <a href="#">Home</a>
+              <a href="/">Home</a>
             </li>
             <li>
-              <a href="#">Package</a>
+              <a href="/packages">Package</a>
             </li>
             <li>
-              <a href="#">Portfolio</a>
+              <a href="/portfolio">Portfolio</a>
             </li>
             <li>
-              <a href="#">About Us</a>
+              <a href="/about-us">About Us</a>
             </li>
             <li>
-              <Button>Contact Us</Button>
+              <Button btnLink="/contact-us">Contact Us</Button>
             </li>
           </ul>
         </div>
       </nav>
+
+      {/* Background Blur */}
       <div className="background-blur absolute w-full h-[200px] z-10 left-0"></div>
     </>
   );

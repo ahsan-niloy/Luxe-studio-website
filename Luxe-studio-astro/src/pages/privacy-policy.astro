@@ -1,0 +1,18 @@
+---
+import PrivacyPolicyContent from "../components/legal-page/PrivacyPolicy";
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import Faq from "../components/home-page/Faq";
+import ContactUsElement from "../components/home-page/ContactUs"
+
+---
+
+<Layout>
+  <Navbar client:load/>
+  <PrivacyPolicyContent />
+  <Faq client:idle/>
+  <ContactUsElement client:idle/>
+  <Footer />
+</Layout>
+

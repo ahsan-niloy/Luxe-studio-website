@@ -17,7 +17,7 @@ const imageArray = Object.entries(images).map(([path, module]) => ({
 ---
 
 <Layout>
-  <Navbar />
+  <Navbar client:load/>
   <PortfolioCover>
   <div>
     {imageArray.map((image, index) => (
