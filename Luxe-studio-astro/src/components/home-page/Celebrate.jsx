@@ -17,7 +17,12 @@ export default function Celebrate() {
           dreamed of
         </p>
         <div className="px-[5vw] md:px-[10vw] mt-6">
-          <Button>Book a Call</Button>
+          <Button
+            btnLink="https://calendly.com/habibniloy/luxe-studios"
+            newTab={true}
+          >
+            Book a Call
+          </Button>
         </div>
       </div>
       <div className="sm:mr-[5vw] md:mr-[10vw] m-4 relative">

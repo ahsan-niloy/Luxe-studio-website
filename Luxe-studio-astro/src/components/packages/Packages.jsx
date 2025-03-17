@@ -51,7 +51,12 @@ function Packages() {
               <li>Luxury Wedding Albums</li>
               <li>Drone Videography for Aerial Shots</li>
             </ul>
-            <Button>Book Now</Button>
+            <Button
+              btnLink="https://calendly.com/habibniloy/luxe-studios"
+              newTab={true}
+            >
+              Book Now
+            </Button>
           </div>
         </div>
       </div>
@@ -79,7 +84,12 @@ function Packages() {
               <li>Candid & Posed Shots</li>
               <li>High-Resolution Videos for Social Media & Marketing</li>
             </ul>
-            <Button>Book Now</Button>
+            <Button
+              btnLink="https://calendly.com/habibniloy/luxe-studios"
+              newTab={true}
+            >
+              Book Now
+            </Button>
           </div>
         </div>
       </div>
@@ -105,7 +115,12 @@ function Packages() {
               <li>Professional Retouching & Editing</li>
               <li>Business Headshots, Modelling, & Fashion Shoots</li>
             </ul>
-            <Button>Book Now</Button>
+            <Button
+              btnLink="https://calendly.com/habibniloy/luxe-studios"
+              newTab={true}
+            >
+              Book Now
+            </Button>
           </div>
         </div>
       </div>
@@ -132,7 +147,12 @@ function Packages() {
               <li>Candid & Styled Photography</li>
               <li>Themed Shoots for Unique Concepts</li>
             </ul>
-            <Button>Book Now</Button>
+            <Button
+              btnLink="https://calendly.com/habibniloy/luxe-studios"
+              newTab={true}
+            >
+              Book Now
+            </Button>
           </div>
         </div>
       </div>

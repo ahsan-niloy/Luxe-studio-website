@@ -9,7 +9,13 @@ export default function Header() {
           <br />
           Wedding Memories
         </h1>
-        <Button className="mx-auto mt-2 sm:scale-110">Book a Call</Button>
+        <Button
+          className="mx-auto mt-6 sm:scale-110"
+          btnLink="https://calendly.com/habibniloy/luxe-studios"
+          newTab={true}
+        >
+          Book a Call
+        </Button>
       </div>
       <img
         src="/assets/headerImg.jpg"

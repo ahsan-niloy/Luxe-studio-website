@@ -6,6 +6,7 @@ export default function Button({
   icon = "",
   className = "",
   btnLink = "#",
+  newTab = false,
 }) {
   const buttonType =
     type === "secondary"
@@ -13,7 +14,7 @@ export default function Button({
       : "primary-button button-content";
 
   return (
-    <a href={btnLink}>
+    <a href={btnLink} target={newTab ? "_blank" : ""}>
       <button className={`${buttonType} ${className || ""}`}>
         {children} {icon != "" ? <img src={icon} alt="button icon" /> : ""}
       </button>

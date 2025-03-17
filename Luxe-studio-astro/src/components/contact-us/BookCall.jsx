@@ -6,7 +6,13 @@ function BookCall() {
       <h2 className="text-center text-[2rem] py-2">
         Let's discuss your dream event
       </h2>
-      <Button className="m-auto">Book a Call</Button>
+      <Button
+        className="m-auto"
+        btnLink="https://calendly.com/habibniloy/luxe-studios"
+        newTab={true}
+      >
+        Book a Call
+      </Button>
     </div>
   );
 }

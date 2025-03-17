@@ -35,7 +35,7 @@ export default function Navbar({ textColor = "#FFFFFF" }) {
           </a>
         </div>
 
-        {/* Hamburger Menu */}
+        {/* Hamburger Menu (Visible on Mobile Only) */}
         <div className="block md:hidden absolute right-[5vw] z-40">
           <Hamburger
             toggled={showNavMenu}
@@ -47,16 +47,37 @@ export default function Navbar({ textColor = "#FFFFFF" }) {
           />
         </div>
 
-        {/* Navigation Links */}
-        <div>
-          <ul
-            className={`${
-              showNavMenu
-                ? "absolute z-30 top-0 left-0 text-[#717342] bg-[#f0eee8] flex flex-col justify-center items-center w-full h-screen text-[2rem] gap-6 transition-all duration-300 ease-in-out"
-                : "hidden md:flex md:flex-row md:gap-4 items-center"
-            }`}
-            style={{ color: showNavMenu ? navTextDropdownColor : textColor }}
-          >
+        {/* Desktop Navigation (Always Visible) */}
+        <ul
+          className="hidden md:flex md:flex-row md:gap-4 items-center"
+          style={{ color: textColor }}
+        >
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/packages">Package</a>
+          </li>
+          <li>
+            <a href="/portfolio">Portfolio</a>
+          </li>
+          <li>
+            <a href="/about-us">About Us</a>
+          </li>
+          <li>
+            <Button btnLink="/contact-us">Contact Us</Button>
+          </li>
+        </ul>
+
+        {/* Mobile Navigation Menu (Sliding Down from Top Without Opacity) */}
+        <div
+          className={`fixed top-0 left-0 w-full h-screen bg-[#f0eee8] flex flex-col justify-center items-center text-[#717342] text-[2rem] gap-6 transition-transform duration-500 ease-in-out ${
+            showNavMenu
+              ? "translate-y-0 pointer-events-auto"
+              : "-translate-y-full pointer-events-none"
+          } md:hidden`}
+        >
+          <ul className="text-center">
             <li>
               <a href="/">Home</a>
             </li>
@@ -69,7 +90,7 @@ export default function Navbar({ textColor = "#FFFFFF" }) {
             <li>
               <a href="/about-us">About Us</a>
             </li>
-            <li>
+            <li className="mt-4">
               <Button btnLink="/contact-us">Contact Us</Button>
             </li>
           </ul>

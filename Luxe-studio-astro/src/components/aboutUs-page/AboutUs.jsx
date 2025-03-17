@@ -81,7 +81,13 @@ export default function AboutUs() {
         <h2 className="text-4xl font-semibold mt-[5rem] mb-4">
           Reserve a sit for your day
         </h2>
-        <Button className="mx-auto">Book a call</Button>
+        <Button
+          className="mx-auto"
+          btnLink="https://calendly.com/habibniloy/luxe-studios"
+          newTab={true}
+        >
+          Book a call
+        </Button>
       </div>
     </div>
   );
