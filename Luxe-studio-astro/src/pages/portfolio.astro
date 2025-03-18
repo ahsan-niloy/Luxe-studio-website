@@ -5,25 +5,50 @@ import Navbar from "../components/Navbar";
 import PortfolioCover from "../components/portfolio-page/PortfolioCover";
 import Layout from "../layouts/Layout.astro";
 import ContactUs from '../components/home-page/ContactUs';
+import siteData from "../data/siteData.json";
+import jsonLDGenerator from "../js/jsonLD";
 
+// SEO Metadata
+const seoTitle = "Portfolio - Luxe Studios | Wedding & Event Photography";
+const seoDescription = "Explore Luxe Studios' stunning photography portfolio featuring weddings, engagements, corporate events, and creative portraits.";
+const seoImage = "/assets/luxe-studios-banner.jpg";
+const seoURL = import.meta.env.SITE + "/portfolio";
 
-// Dynamically import all images from the folder
+// Dynamically import all images from the portfolio folder
 const images = import.meta.glob('../assets/portfolio-images/*.jpg', { eager: true });
 
 const imageArray = Object.entries(images).map(([path, module]) => ({
   src: module.default,
-  alt: "Luxe Studios protfolio picture", // Use filename as alt text
+  alt: "Luxe Studios portfolio picture", // Ensuring images have alt attributes
 }));
+
+// JSON-LD Structured Data (Image Gallery)
+const jsonLD = jsonLDGenerator({
+  type: "ImageGallery",
+  images: imageArray.map(image => ({
+    "@type": "ImageObject",
+    "contentUrl": image.src,
+    "name": "Luxe Studios Portfolio Image",
+    "description": "Photography by Luxe Studios",
+  })),
+  url: seoURL,
+});
 ---
 
-<Layout>
-  <Navbar client:load/>
+<Layout title={seoTitle} description={seoDescription} image={seoImage} url={seoURL} jsonLD={jsonLD}>
+  <Navbar client:load />
   <PortfolioCover>
-  <div>
-    {imageArray.map((image, index) => (
-      <Image src={image.src} alt={image.alt} loading="lazy" class="w-full mb-4 rounded-xl" />
-    ))}
-  </div></PortfolioCover>
-  <ContactUs client:load/>
+    <div>
+      {imageArray.map((image, index) => (
+        <Image 
+          src={image.src} 
+          alt={image.alt} 
+          loading="lazy" 
+          class="w-full h-auto rounded-xl shadow-md mb-4" 
+        />
+      ))}
+    </div>
+  </PortfolioCover>
+  <ContactUs client:idle />
   <Footer />
 </Layout>

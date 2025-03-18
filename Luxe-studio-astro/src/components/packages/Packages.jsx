@@ -26,7 +26,7 @@ function Packages() {
         to deliver stunning visuals that last a lifetime.
       </p>
       {/* packages starts here ======================================== */}
-      <div>
+      <div id="wedding-package">
         <div className="flex flex-col md:flex-row justify-center items-center gap-[2rem] md:gap-[8rem] mt-[4rem]">
           <div className="h-[400px]">
             <img
@@ -60,7 +60,7 @@ function Packages() {
           </div>
         </div>
       </div>
-      <div>
+      <div id="event-package">
         <div className="flex  flex-col md:flex-row-reverse justify-center items-center gap-[2rem] md:gap-[8rem] mt-[4rem]">
           <div className="h-[400px] max-w-[350px]">
             <img
@@ -93,7 +93,7 @@ function Packages() {
           </div>
         </div>
       </div>
-      <div>
+      <div id="portrait-package">
         <div className="flex flex-col md:flex-row justify-center items-center gap-[2rem] md:gap-[8rem] mt-[4rem]">
           <div className="h-[400px]">
             <img
@@ -124,7 +124,7 @@ function Packages() {
           </div>
         </div>
       </div>
-      <div>
+      <div id="couple-package">
         <div className="flex flex-col md:flex-row-reverse justify-center items-center gap-[2rem] md:gap-[8rem] mt-[4rem] mb-[2rem] md:mb-[4rem]">
           <div className="h-[400px]">
             <img

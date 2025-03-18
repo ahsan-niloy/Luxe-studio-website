@@ -3,15 +3,45 @@ import Layout from "../layouts/Layout.astro";
 import AboutUs from "../components/aboutUs-page/AboutUs";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import ContactUs from '../components/home-page/ContactUs';
+import ContactUs from "../components/home-page/ContactUs";
+import siteData from "../data/siteData.json";
+import jsonLDGenerator from "../js/jsonLD";
 
+// SEO Metadata
+const seoTitle = "About Us - Luxe Studios | Wedding & Event Photography";
+const seoDescription = "Meet the talented team behind Luxe Studios. Learn about our passion for wedding photography and videography, and how we bring your moments to life.";
+const seoImage = "/assets/luxe-studios-banner.jpg";
+const seoURL = import.meta.env.SITE + "/about-us";
 
-
+// JSON-LD Structured Data for Organization
+const jsonLD = jsonLDGenerator({
+  type: "Organization",
+  name: "Luxe Studios",
+  url: seoURL,
+  logo: "/assets/final-logo.svg",
+  description: seoDescription,
+  founders: [
+    {
+      "@type": "Person",
+      "name": "Ahsan Habib Niloy",
+      "jobTitle": "Lead Photographer & Co-Founder",
+      "image": "/assets/about-us-Ahsan.jpg",
+      "description": "A passionate photographer with 4 years of experience, dedicated to capturing love stories through stunning visuals.",
+    },
+    {
+      "@type": "Person",
+      "name": "Tharoushan Kandarajah",
+      "jobTitle": "Lead Videographer & Co-Founder",
+      "image": "/assets/about-us-tharu.jpg",
+      "description": "A skilled videographer with 6 years of experience, specializing in wedding films that beautifully narrate your love story.",
+    }
+  ]
+});
 ---
 
-<Layout>
-    <Navbar client:load/>
-    <AboutUs/>
-    <ContactUs client:load/>
-    <Footer/>
+<Layout title={seoTitle} description={seoDescription} image={seoImage} url={seoURL} jsonLD={jsonLD}>
+  <Navbar client:load />
+  <AboutUs client:load />
+  <ContactUs client:load />
+  <Footer />
 </Layout>

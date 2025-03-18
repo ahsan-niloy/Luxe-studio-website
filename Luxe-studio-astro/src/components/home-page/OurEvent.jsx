@@ -20,7 +20,7 @@ export default function OurEvent() {
       location: "Tranquille, Kamloops",
       description:
         "Celebrate a joyous reception with family, friends, love, and laughter.",
-      buttonLink: "#",
+      buttonLink: "/our-work/niki",
       backgroundImage: "/assets/our-work-card-1.jpg",
     },
     {
@@ -28,14 +28,14 @@ export default function OurEvent() {
       location: "Sahali, Kamloops",
       description:
         "If you are looking for best mountain view Kamloops is the perfect place for you",
-      buttonLink: "#",
+      buttonLink: "/our-work/khaled",
       backgroundImage: "/assets/our-work-card-2.jpg",
     },
     {
       date: "28 July",
       location: "Hill side, Kamloops",
       description: "Hillside Residential Area with Scenic Views in Kamloops.",
-      buttonLink: "#",
+      buttonLink: "/our-work/anmol",
       backgroundImage: "/assets/our-work-card-3.jpg",
     },
   ];

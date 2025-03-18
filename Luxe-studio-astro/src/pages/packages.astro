@@ -1,20 +1,35 @@
 ---
-import Layout from "../layouts/Layout.astro"
-import Navbar from "../components/Navbar"
-import Footer from "../components/Footer"
-import Faq from "../components/home-page/Faq"
-import ContactUs from "../components/home-page/ContactUs"
-import PhotoHeader from "../components/PhotoHeader"
-import Packages from "../components/packages/Packages"
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import Faq from "../components/home-page/Faq";
+import ContactUs from "../components/home-page/ContactUs";
+import PhotoHeader from "../components/PhotoHeader";
+import Packages from "../components/packages/Packages";
+import siteData from "../data/siteData.json";
+import jsonLDGenerator from "../js/jsonLD";
+
+const seoTitle = "Photography & Videography Packages - Luxe Studios";
+const seoDescription = "Explore Luxe Studios' premium wedding photography, cinematic videography, and professional portrait services. Book your session today!";
+const seoImage = "/assets/luxe-studios-banner.jpg";
+const seoURL = import.meta.env.SITE + "/packages";
+
+const jsonLD = jsonLDGenerator({
+  type: "website",
+  url: seoURL,
+});
 ---
 
-<Layout>
-    <Navbar client:load/>
-    <PhotoHeader image={"/assets/portfolio-cover-2.jpg"}><h1 class="text-[1.5rem] leading-10 md:text-[3rem] md:bottom-6 text-white absolute bottom-0 px-[5vw] md:px-[10vw]">
-        Luxe Studios – Premium Photography & Videography Services</h1></PhotoHeader>
-    <Packages/>
-    <ContactUs/>
-    <Faq client:idle/>
-    <ContactUs client:idle/>
-    <Footer/>
-</Layout>;
+<Layout title={seoTitle} description={seoDescription} image={seoImage} url={seoURL} jsonLD={jsonLD}>
+  <Navbar client:load />
+  <PhotoHeader image='/assets/portfolio-cover-2.jpg'>
+    <h1 class="text-[1.5rem] leading-10 md:text-[3rem] md:bottom-6 text-white absolute bottom-0 px-[5vw] md:px-[10vw]">
+      Luxe Studios – Premium Photography & Videography Services
+    </h1>
+  </PhotoHeader>
+
+  <Packages />
+  <ContactUs client:idle/>
+  <Faq client:idle />
+  <Footer />
+</Layout>

@@ -4,15 +4,29 @@ import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Faq from "../components/home-page/Faq";
-import ContactUsElement from "../components/home-page/ContactUs"
+import ContactUsElement from "../components/home-page/ContactUs";
+import siteData from "../data/siteData.json";
+import jsonLDGenerator from "../js/jsonLD";
 
+// SEO Metadata
+const seoTitle = "Privacy Policy - Luxe Studios";
+const seoDescription = "Read Luxe Studios' Privacy Policy to learn how we handle personal data, protect your information, and comply with privacy laws.";
+const seoImage = "/assets/luxe-studios-banner.jpg"; // Update with an appropriate image if available
+const seoURL = import.meta.env.SITE + "/privacy-policy";
+
+// JSON-LD Structured Data for Privacy Policy Page
+const jsonLD = jsonLDGenerator({
+  type: "WebPage",
+  name: "Privacy Policy - Luxe Studios",
+  url: seoURL,
+  description: seoDescription
+});
 ---
 
-<Layout>
-  <Navbar client:load/>
+<Layout title={seoTitle} description={seoDescription} image={seoImage} url={seoURL} jsonLD={jsonLD}>
+  <Navbar client:load />
   <PrivacyPolicyContent />
-  <Faq client:idle/>
-  <ContactUsElement client:idle/>
+  <Faq client:idle />
+  <ContactUsElement client:idle />
   <Footer />
 </Layout>
-

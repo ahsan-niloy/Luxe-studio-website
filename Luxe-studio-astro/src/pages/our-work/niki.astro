@@ -1,12 +1,14 @@
 ---
-import Layout from "../../layouts/Layout.astro"
-import Navbar from "../../components/Navbar"
-import NiceWords from "../../components/home-page/NiceWords"
-import ContactUs from "../../components/home-page/ContactUs"
-import Footer from "../../components/Footer"
-import WorkHeading from "../../components/our-work-page/WorkhHeading"
-// img 
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar";
+import NiceWords from "../../components/home-page/NiceWords";
+import ContactUs from "../../components/home-page/ContactUs";
+import Footer from "../../components/Footer";
+import WorkHeading from "../../components/our-work-page/WorkhHeading";
+// Image import
 import { Image } from "astro:assets";
+import siteData from "../../data/siteData.json";
+import jsonLDGenerator from "../../js/jsonLD";
 
 // Dynamically import all images from the folder
 const images = import.meta.glob('../../assets/portfolio-images/*.jpg', { eager: true });
@@ -15,23 +17,45 @@ const imageArray = Object.entries(images)
   .filter(([path]) => path.includes("niki")) // ✅ Filter images with "niki" in the filename
   .map(([path, module]) => ({
     src: module.default,
-    alt: "Luxe Studios portfolio picture",
+    alt: "Nikki & Ryan - Luxe Studios Photography",
   }));
 
-  // data
-  const info = {name:"Nikki & Ryan",location:"Tranquille, Kamloops.", description: "We had an amazing time capturing Niki and Ryans couple photoshoot at Tranquille, Kamloops. With its open fields, rustic charm, and golden light, this location was the perfect setting for a romantic and natural photoshoot. Niki, a talented photographer from Kamloops, brought a beautiful energy to the session, and Ryan’s calm presence made their connection even more special. As the sun set, every moment felt warm, real, and full of love. We focused on capturing their laughter, soft glances, and the quiet moments that truly tell their story."}
+// Data for the portfolio entry
+const info = {
+  name: "Nikki & Ryan",
+  location: "Tranquille, Kamloops",
+  description: "We had an amazing time capturing Nikki and Ryan’s couple photoshoot at Tranquille, Kamloops. With its open fields, rustic charm, and golden light, this location was the perfect setting for a romantic and natural photoshoot. Nikki, a talented photographer from Kamloops, brought a beautiful energy to the session, and Ryan’s calm presence made their connection even more special. As the sun set, every moment felt warm, real, and full of love. We focused on capturing their laughter, soft glances, and the quiet moments that truly tell their story."
+};
+
+// SEO Metadata
+const seoTitle = `${info.name} Photoshoot - Luxe Studios | Wedding & Couples Photography`;
+const seoDescription = `Experience Nikki & Ryan’s romantic couple photoshoot in Tranquille, Kamloops. Luxe Studios beautifully captured their love story with golden light and rustic charm.`;
+const seoImage = imageArray.length > 0 ? imageArray[0].src : "/assets/portfolio-cover.jpg";
+const seoURL = import.meta.env.SITE + "/our-work/nikki-ryan";
+
+// JSON-LD Structured Data for ImageGallery
+const jsonLD = jsonLDGenerator({
+  type: "ImageGallery",
+  images: imageArray.map(image => ({
+    "@type": "ImageObject",
+    "contentUrl": image.src,
+    "name": `Nikki & Ryan Photoshoot - Luxe Studios`,
+    "description": "A beautiful couple photoshoot captured in Tranquille, Kamloops by Luxe Studios.",
+  })),
+  url: seoURL,
+});
 ---
 
-<Layout>
-	<Navbar client:load/>
+<Layout title={seoTitle} description={seoDescription} image={seoImage} url={seoURL} jsonLD={jsonLD}>
+	<Navbar client:load />
     <WorkHeading client:load name={info.name} location={info.location} description={info.description}>
       <div>
         {imageArray.map((image, index) => (
-          <Image src={image.src} alt={image.alt} loading="lazy" class="w-full mb-4 rounded-xl" />
+          <Image src={image.src} alt={image.alt} loading="lazy" class="w-full h-auto rounded-xl shadow-md mb-4" />
         ))}
       </div>
     </WorkHeading>
-    <NiceWords client:idle/>
-    <ContactUs client:load/>
-	<Footer/>
+    <NiceWords client:idle />
+    <ContactUs client:idle />
+	<Footer />
 </Layout>

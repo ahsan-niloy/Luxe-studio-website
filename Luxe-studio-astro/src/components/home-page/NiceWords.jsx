@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 const testimonials = [
   {
-    text: `"Luxe Studio was fantastic! They understood exactly what we wanted and delivered beautifully. The video was a highlight—it captured all the emotions of the day and even made us cry (in the best way!). We couldn’t be happier."`,
+    text: `"Luxe Studio was fantastic! They understood exactly what we wanted and delivered beautifully. The video was a highlight, it captured all the emotions of the day. We couldn’t be happier."`,
     name: "Sophia & Michael",
   },
   {
